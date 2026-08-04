@@ -1,5 +1,6 @@
 process.env.NODE_ENV = 'test';
 process.env.SITE_URL = 'https://jordan-elite-test.netlify.app';
+process.env.LAMBDA_TASK_ROOT = require('node:path').resolve(__dirname, '..');
 
 const test = require('node:test');
 const assert = require('node:assert/strict');

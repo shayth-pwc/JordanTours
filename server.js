@@ -9,15 +9,16 @@ const { verifyTransport } = require('./src/services/mailer');
 function createApp() {
   const app = express();
   const siteUrl = (process.env.SITE_URL || process.env.URL || 'http://localhost:3000').replace(/\/$/, '');
+  const projectRoot = process.env.LAMBDA_TASK_ROOT || __dirname;
   app.set('view engine', 'ejs');
-  app.set('views', path.join(__dirname, 'views'));
+  app.set('views', path.join(projectRoot, 'views'));
   app.disable('x-powered-by');
   app.set('trust proxy', 1);
   app.use(securityMiddleware);
   app.use(compression());
   app.use(express.json({ limit: '50kb' }));
   app.use(express.urlencoded({ extended: false, limit: '50kb' }));
-  app.use(express.static(path.join(__dirname, 'public'), { maxAge: process.env.NODE_ENV === 'production' ? '7d' : 0, etag: true }));
+  app.use(express.static(path.join(projectRoot, 'public'), { maxAge: process.env.NODE_ENV === 'production' ? '7d' : 0, etag: true }));
 
   app.get('/', (req, res) => res.render('index', { page: 'home', siteUrl, title: 'Jordan Elite | Private Tours and Transportation in Jordan' }));
   app.get('/privacy', (req, res) => res.render('privacy', { page: 'privacy', siteUrl, title: 'Privacy Notice | Jordan Elite' }));
