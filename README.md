@@ -77,3 +77,22 @@ If Yahoo authentication fails, confirm that the account address is correct, an a
 Deploy to any Node.js 20+ host. Configure `PORT` if required by the provider, set `NODE_ENV=production`, set `SITE_URL` to the final HTTPS origin, and provide SMTP variables through the host’s secret manager. Terminate TLS at the hosting platform or reverse proxy. The application trusts one proxy hop for correct client IP rate limiting.
 
 Static files use compression and production cache headers. For a multi-instance deployment, replace the default in-memory rate-limit store with a shared store.
+
+### Netlify
+
+The repository includes `netlify.toml` and `netlify/functions/app.js`. Netlify serves files under `public/` directly and rewrites application routes to an Express-compatible Netlify Function.
+
+In **Project configuration → Environment variables**, add the following variables and make them available to Functions. Do not put the real password in `netlify.toml` or commit it in `.env`.
+
+```text
+NODE_ENV=production
+SITE_URL=https://your-final-domain.example
+CONTACT_TO=jordanelite26@yahoo.com
+SMTP_HOST=smtp.mail.yahoo.com
+SMTP_PORT=465
+SMTP_SECURE=true
+SMTP_USER=jordanelite26@yahoo.com
+SMTP_PASS=your_yahoo_app_password
+```
+
+If `SITE_URL` is omitted, the application uses Netlify’s built-in `URL` value. Setting it explicitly is recommended when using a custom domain. Trigger a new deploy after changing environment variables; runtime variables are not updated in an already-published function instance.

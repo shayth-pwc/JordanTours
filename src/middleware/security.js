@@ -32,8 +32,15 @@ const contactLimiter = rateLimit({
 
 function sameOrigin(req, res, next) {
   const origin = req.get('origin');
-  const siteUrl = process.env.SITE_URL || 'http://localhost:3000';
-  if (origin && origin !== siteUrl) return res.status(403).json({ ok: false, message: 'Request origin was not accepted.' });
+  const siteUrl = (process.env.SITE_URL || process.env.URL || 'http://localhost:3000').replace(/\/$/, '');
+  const forwardedProtocol = req.get('x-forwarded-proto')?.split(',')[0]?.trim();
+  const requestOrigin = `${forwardedProtocol || req.protocol}://${req.get('host')}`;
+  const allowedOrigins = new Set([requestOrigin]);
+  try { allowedOrigins.add(new URL(siteUrl).origin); } catch (error) { /* request origin remains the fail-safe */ }
+  if (process.env.URL) {
+    try { allowedOrigins.add(new URL(process.env.URL).origin); } catch (error) { /* ignore invalid platform value */ }
+  }
+  if (origin && !allowedOrigins.has(origin)) return res.status(403).json({ ok: false, message: 'Request origin was not accepted.' });
   next();
 }
 

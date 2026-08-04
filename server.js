@@ -8,7 +8,7 @@ const { verifyTransport } = require('./src/services/mailer');
 
 function createApp() {
   const app = express();
-  const siteUrl = (process.env.SITE_URL || 'http://localhost:3000').replace(/\/$/, '');
+  const siteUrl = (process.env.SITE_URL || process.env.URL || 'http://localhost:3000').replace(/\/$/, '');
   app.set('view engine', 'ejs');
   app.set('views', path.join(__dirname, 'views'));
   app.disable('x-powered-by');
