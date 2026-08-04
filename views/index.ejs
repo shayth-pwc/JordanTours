@@ -1,0 +1,80 @@
+<%- include('partials/header') %>
+<main id="main">
+  <section id="home" class="hero" aria-labelledby="hero-title">
+    <img class="hero-image" src="/images/petra-hero.jpg" alt="The Treasury carved into the rose-red cliffs of Petra" width="1800" height="1200" fetchpriority="high">
+    <div class="hero-shade"></div>
+    <div class="hero-content">
+      <h1 id="hero-title">Explore Jordan in<br><em>Comfort and Style</em></h1>
+      <p>Discover Jordan’s most remarkable destinations with private transportation, flexible itineraries, and personalized service. From airport arrivals to Petra, Wadi Rum, Aqaba, Jerash, and Umm Qais, Jordan Elite makes every journey comfortable and memorable.</p>
+      <div class="hero-actions"><a class="button" href="#contact">Plan Your Tour <span aria-hidden="true">→</span></a><a class="button button-ghost" href="https://wa.me/962797011151?text=Hello%20Jordan%20Elite%2C%20I%20would%20like%20to%20ask%20about%20a%20tour%20or%20transportation%20service%20in%20Jordan." target="_blank" rel="noopener">Chat on WhatsApp</a></div>
+      <p class="trust-line">Private tours <i></i> Airport transfers <i></i> Border transportation <i></i> Custom itineraries</p>
+    </div>
+    <a class="scroll-cue" href="#services" aria-label="Scroll to services"><span>Explore</span><i></i></a>
+  </section>
+
+  <section id="services" class="section services" aria-labelledby="services-title">
+    <div class="section-heading split-heading"><div><p class="section-kicker">Our services</p><h2 id="services-title">Travel designed<br>around you.</h2></div><p>From airport arrivals to multi-day journeys, every route is shaped around your schedule, group, and preferred way to experience Jordan.</p></div>
+    <div class="service-list">
+      <% const services = [
+        ['01','Airport Transfers','Private pickup and drop-off services for Queen Alia International Airport and King Hussein International Airport. Pickup details can be coordinated using the passenger’s flight information.','Airport Transfer','plane-landing'],
+        ['02','Border Transfers','Transportation from and to Jordan’s land-border crossing points, subject to official border regulations and operating hours.','Border Transfer','signpost'],
+        ['03','Private Driver Service','Book a private vehicle and professional driver for a day, several days, business travel, or a customized itinerary.','Private Driver','car-front'],
+        ['04','Private and Custom Tours','Create flexible single-day and multi-day tours based on the traveler’s schedule, group size, and preferred destinations.','Custom Itinerary','map'],
+        ['05','Family and Group Transportation','Transportation options for couples, families, small groups, corporate visitors, and larger groups, subject to vehicle availability.','Other','users'],
+        ['06','Optional Trip Arrangements','Request local-guide arrangements, Wadi Rum jeep tours, desert camps, Red Sea activities, and other itinerary additions.','Other','compass']]; %>
+      <% services.forEach((item) => { %><article class="service-item"><span class="service-number"><%= item[0] %></span><div class="service-icon" aria-hidden="true"><i data-lucide="<%= item[4] %>"></i></div><div><h3><%= item[1] %></h3><p><%= item[2] %></p><a href="#contact" class="text-link js-prefill" data-service="<%= item[3] %>">Request This Service <span aria-hidden="true">→</span></a></div></article><% }); %>
+    </div>
+  </section>
+
+  <section id="destinations" class="section destinations" aria-labelledby="destinations-title">
+    <div class="section-heading"><p class="section-kicker">Destinations</p><h2 id="destinations-title">Jordan’s timeless wonders.</h2></div>
+    <div class="destination-grid">
+      <%- include('partials/destination-card', {slug:'petra', image:'petra.jpg', alt:'The Treasury at Petra framed by rose sandstone', name:'Petra', service:'Petra Tour', description:'Walk through the Siq and discover the Treasury, ancient tombs, temples, and viewpoints of Jordan’s famous archaeological city.'}) %>
+      <%- include('partials/destination-card', {slug:'wadi-rum', image:'wadi-rum.jpg', alt:'Sandstone mountains and desert landscape in Wadi Rum', name:'Wadi Rum', service:'Wadi Rum Tour', description:'Experience dramatic desert landscapes, sandstone mountains, jeep tours, sunset views, desert camps, and stargazing experiences.'}) %>
+      <%- include('partials/destination-card', {slug:'jerash', image:'jerash.jpg', alt:'Roman columns and archaeological ruins in Jerash', name:'Jerash', service:'Jerash Tour', description:'Explore Roman streets, temples, theaters, plazas, and historic gates at one of Jordan’s most impressive archaeological destinations.'}) %>
+      <%- include('partials/destination-card', {slug:'aqaba', image:'aqaba.jpg', alt:'The Red Sea coastline at Aqaba', name:'Aqaba', service:'Aqaba Tour', description:'Relax beside the Red Sea, visit Aqaba’s waterfront, or arrange optional activities such as snorkeling, diving, and boat trips.'}) %>
+      <%- include('partials/destination-card', {slug:'umm-qais', image:'umm-qais.jpg', alt:'Basalt ruins and landscape at ancient Gadara in Umm Qais', name:'Umm Qais', service:'Umm Qais Tour', description:'Discover the ancient city of Gadara, basalt ruins, northern Jordanian landscapes, and panoramic views from a scenic historical site.'}) %>
+    </div>
+    <div class="more-places"><span>More Places to Explore</span><ul><li>Amman</li><li>Dead Sea</li><li>Madaba</li><li>Mount Nebo</li><li>Ajloun</li><li>Dana</li></ul></div>
+  </section>
+
+  <section id="tours" class="section tours" aria-labelledby="tours-title">
+    <div class="section-heading split-heading"><div><p class="section-kicker">Curated journeys</p><h2 id="tours-title">Start with an idea.<br>Make it your own.</h2></div><p>Every tour is private and flexible. Share your preferred dates and destinations to receive a customized quotation.</p></div>
+    <div class="tour-list">
+      <%- include('partials/tour-card', {number:1,label:'Full Day',name:'Petra Full-Day Experience',description:'Private transportation to Petra with a flexible schedule and optional local-guide arrangements.',service:'Petra Tour'}) %>
+      <%- include('partials/tour-card', {number:2,label:'Customizable',name:'Wadi Rum Desert Adventure',description:'Transportation to Wadi Rum with optional jeep-tour, camp, sunset, and overnight arrangements.',service:'Wadi Rum Tour'}) %>
+      <%- include('partials/tour-card', {number:3,label:'Private Transportation',name:'Jerash and Umm Qais Tour',description:'A private northern Jordan journey combining two important historical destinations.',service:'Jerash Tour'}) %>
+      <%- include('partials/tour-card', {number:4,label:'Full Day or Weekend',name:'Aqaba Red Sea Escape',description:'Private transportation to Aqaba for a day trip, weekend, hotel transfer, or customized coastal visit.',service:'Aqaba Tour'}) %>
+      <%- include('partials/tour-card', {number:5,label:'Multi-Day Option',name:'Jordan Highlights Tour',description:'A customizable multi-day itinerary combining Amman, Petra, Wadi Rum, Aqaba, the Dead Sea, Jerash, and other destinations.',service:'Jordan Highlights Tour'}) %>
+    </div>
+  </section>
+
+  <section class="transport" aria-labelledby="transport-title">
+    <div class="transport-image"><img src="/images/airport-transfer.jpg" alt="Queen Alia International Airport terminal for coordinated airport pickup" width="1800" height="950" loading="lazy"></div>
+    <div class="transport-content"><p class="section-kicker">Transportation</p><h2 id="transport-title">The right vehicle<br>for the journey.</h2><p>Vehicle selection is based on passenger count, luggage requirements, route, and availability. Share your trip details to receive the most suitable transportation option.</p><ul><li>Comfortable sedan</li><li>SUV</li><li>Family minivan</li><li>Group van or bus</li></ul><a href="#contact" class="button js-prefill" data-service="Private Driver">Request Transportation</a></div>
+  </section>
+
+  <section id="why-us" class="section why-us" aria-labelledby="why-title">
+    <div class="why-intro"><p class="section-kicker">Why choose us</p><h2 id="why-title">Jordan, shaped<br>around your plans.</h2><p>Personal service from the first pickup to the final destination.</p></div>
+    <ol class="why-list"><li>Private and personalized transportation</li><li>Flexible pickup times and itineraries</li><li>Airport and border coordination</li><li>Comfortable vehicle options</li><li>Services for individuals, families, and groups</li><li>Direct assistance through phone and WhatsApp</li><li>Customized single-day and multi-day journeys</li></ol>
+  </section>
+
+  <section class="section process" aria-labelledby="process-title"><div class="section-heading"><p class="section-kicker">How booking works</p><h2 id="process-title">Four steps. One memorable journey.</h2></div><ol class="process-list"><li><span>01</span><h3>Choose Your Service</h3><p>Select a destination, tour, airport transfer, border transfer, or private-driver service.</p></li><li><span>02</span><h3>Send Your Request</h3><p>Complete the website form or contact Jordan Elite using WhatsApp.</p></li><li><span>03</span><h3>Receive Your Plan</h3><p>Jordan Elite will review the requested schedule and provide trip and transportation details.</p></li><li><span>04</span><h3>Confirm Your Journey</h3><p>Confirm the agreed itinerary, pickup information, and travel schedule.</p></li></ol></section>
+
+  <section id="faq" class="section faq" aria-labelledby="faq-title"><div class="faq-heading"><p class="section-kicker">Frequently asked questions</p><h2 id="faq-title">Before you travel.</h2><p>Need something more specific? Send us your route and travel details.</p><a href="#contact" class="text-link">Ask Jordan Elite <span aria-hidden="true">→</span></a></div><div class="accordion">
+    <% const faqs = [['Do you provide airport pickup?','Yes. Travelers can request pickup or drop-off for Queen Alia International Airport and King Hussein International Airport. Flight information should be provided during booking.'],['Do you provide transportation from Jordan’s borders?','Yes. Border pickup and drop-off can be requested. Availability depends on the selected crossing point, official regulations, and operating hours.'],['Are the tours private?','Tours are private and customizable unless the customer requests a group arrangement.'],['Can I combine several destinations?','Yes. Travelers can request multi-day itineraries combining Petra, Wadi Rum, Aqaba, the Dead Sea, Jerash, Umm Qais, and other destinations.'],['Can you arrange a guide or Wadi Rum activities?','Optional local-guide arrangements, desert jeep tours, camps, and selected activities can be requested and confirmed based on availability.'],['How do I receive a price?','Submit the route, travel date, passenger count, and required services. Jordan Elite then provides a customized quotation.'],['What information should I include for an airport transfer?','Include the airport, flight number, arrival or departure time, passenger count, luggage details, and destination.']]; %>
+    <% faqs.forEach((faq, index) => { %><div class="accordion-item"><h3><button type="button" aria-expanded="<%= index === 0 ? 'true' : 'false' %>" aria-controls="faq-panel-<%= index %>" id="faq-button-<%= index %>"><span><%= faq[0] %></span><i aria-hidden="true"></i></button></h3><div class="accordion-panel" id="faq-panel-<%= index %>" role="region" aria-labelledby="faq-button-<%= index %>" <%= index === 0 ? '' : 'hidden' %>><p><%= faq[1] %></p></div></div><% }); %>
+  </div></section>
+
+  <section id="contact" class="contact" aria-labelledby="contact-title"><div class="contact-details"><p class="section-kicker">Plan your journey</p><h2 id="contact-title">Tell us where<br>Jordan takes you.</h2><p>Share your dates, route, and group details. Jordan Elite will review your request and respond using the contact information provided.</p><address><strong>Jordan Elite</strong><a href="tel:+962797011151">Phone and WhatsApp<br>+962 79 701 1151</a><a href="mailto:jordanelite26@yahoo.com">jordanelite26@yahoo.com</a></address></div>
+    <form class="booking-form" action="/api/contact" method="post" data-contact-form novalidate>
+      <div class="form-status" role="status" aria-live="polite" data-form-status></div>
+      <div class="form-grid"><label>Full name <span>*</span><input name="fullName" type="text" autocomplete="name" maxlength="100" required></label><label>Email address <span>*</span><input name="email" type="email" autocomplete="email" maxlength="254" required></label><label>Phone or WhatsApp number <span>*</span><input name="phone" type="tel" autocomplete="tel" maxlength="40" required></label><label>Requested service <span>*</span><select name="service" required><option value="">Choose a service</option><option>Airport Transfer</option><option>Border Transfer</option><option>Petra Tour</option><option>Wadi Rum Tour</option><option>Jerash Tour</option><option>Aqaba Tour</option><option>Umm Qais Tour</option><option>Jordan Highlights Tour</option><option>Private Driver</option><option>Custom Itinerary</option><option>Other</option></select></label><label>Destination or tour<input name="destination" type="text" maxlength="120"></label><label>Travel date<input name="travelDate" type="date"></label><label>Pickup location<input name="pickup" type="text" maxlength="160"></label><label>Drop-off location<input name="dropoff" type="text" maxlength="160"></label><label>Number of travelers<input name="travelers" type="number" min="1" max="200" inputmode="numeric"></label><label>Flight number <small>Optional</small><input name="flightNumber" type="text" maxlength="40"></label><label class="form-wide">Message or itinerary details <span>*</span><textarea name="message" rows="5" minlength="10" maxlength="3000" required></textarea></label></div>
+      <div class="honeypot" aria-hidden="true"><label>Website<input name="website" type="text" tabindex="-1" autocomplete="off"></label></div>
+      <label class="consent"><input name="consent" type="checkbox" value="true" required><span>I give permission for Jordan Elite to contact me about this travel or transportation request. *</span></label>
+      <button class="button submit-button" type="submit"><span>Send My Request</span><i aria-hidden="true"></i></button>
+    </form>
+  </section>
+</main>
+<script type="application/ld+json" nonce="<%= nonce %>">{"@context":"https://schema.org","@type":"TravelAgency","name":"Jordan Elite","url":"<%= siteUrl %>","telephone":"+962797011151","email":"jordanelite26@yahoo.com","areaServed":"Jordan","sameAs":["https://wa.me/962797011151"]}</script>
+<%- include('partials/footer') %>

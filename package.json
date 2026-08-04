@@ -1,0 +1,28 @@
+{
+  "name": "jordan-elite",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Premium tours and private transportation website for Jordan Elite",
+  "main": "server.js",
+  "engines": { "node": ">=20" },
+  "scripts": {
+    "dev": "node --watch server.js",
+    "start": "node server.js",
+    "test": "cross-env NODE_ENV=test node --test",
+    "check": "node --check server.js && node --check public/js/main.js && node --check public/js/contact-form.js"
+  },
+  "dependencies": {
+    "compression": "^1.8.1",
+    "dotenv": "^17.2.1",
+    "ejs": "^3.1.10",
+    "express": "^5.1.0",
+    "express-rate-limit": "^8.0.1",
+    "express-validator": "^7.2.1",
+    "helmet": "^8.1.0",
+    "nodemailer": "^9.0.4"
+  },
+  "devDependencies": {
+    "cross-env": "^10.0.0",
+    "supertest": "^7.1.4"
+  }
+}
